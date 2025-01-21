@@ -22,7 +22,7 @@ application.use(function (request, response, next) {
     response.contentType = "Application/json";
 
     response.setHeader("Access-Control-Allow-Credentials", Boolean(true))
-    response.setHeader("Access-Control-Allow-Origin", allowedOrigins[0]);
+    response.setHeader("Access-Control-Allow-Origin", "*");
     response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PATCH, UPDATE");
 
     next();
