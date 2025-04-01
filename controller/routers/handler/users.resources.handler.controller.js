@@ -64,27 +64,27 @@ router
         response.status(400).jsonp({
           message: "All fields are required!",
           error: "Bad request",
-        status: Number.parseInt(400),
-        contentType: "Application/json",
-        message: "Bad request",
+          status: Number.parseInt(400),
+          contentType: "Application/json",
+          message: "Bad request",
         });
         return;
       } else if (!validator.isEmail(email)) {
         response.status(400).jsonp({
           message: "Please provide a valid email resource!",
           error: "Bad request",
-        status: Number.parseInt(400),
-        contentType: "Application/json",
-        message: "Bad request",
+          status: Number.parseInt(400),
+          contentType: "Application/json",
+          message: "Bad request",
         });
         return;
       } else if (!FoundResource) {
         response.status(404).jsonp({
           message: "No such resource with id was found!",
           error: "Not Found!",
-        status: Number.parseInt(404),
-        contentType: "Application/json",
-        message: "Not Found!",
+          status: Number.parseInt(404),
+          contentType: "Application/json",
+          message: "Not Found!",
         });
       } else {
         response.status(201).jsonp({
@@ -127,27 +127,27 @@ router
         response.status(400).jsonp({
           message: "All fields are required!",
           error: "Bad request",
-        status: Number.parseInt(400),
-        contentType: "Application/json",
-        message: "Bad request",
+          status: Number.parseInt(400),
+          contentType: "Application/json",
+          message: "Bad request",
         });
         return;
       } else if (!validator.isEmail(email)) {
         response.status(400).jsonp({
           message: "Please provide a valid email resource!",
           error: "Bad request",
-        status: Number.parseInt(400),
-        contentType: "Application/json",
-        message: "Bad request",
+          status: Number.parseInt(400),
+          contentType: "Application/json",
+          message: "Bad request",
         });
         return;
       } else if (!FoundResource) {
         response.status(404).jsonp({
           message: "No such resource with id was found!",
           error: "Not Found!",
-        status: Number.parseInt(404),
-        contentType: "Application/json",
-        message: "Not Found!",
+          status: Number.parseInt(404),
+          contentType: "Application/json",
+          message: "Not Found!",
         });
       } else {
         response.status(201).jsonp({
