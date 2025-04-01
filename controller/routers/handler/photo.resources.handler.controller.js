@@ -1,114 +1,159 @@
 "use strict";
+debugger;
 const express = require("express");
 const { format } = require("date-fns");
 const validator = require("validator");
 const router = express.Router();
 
-router.route("/photos").get((request, response) => {
+router
+  .route("/photos")
+  .get((request, response) => {
     response.contentType = "Application/json";
     response.statusCode = 200;
 
     try {
-        request ? response
-            .jsonp({
-                data: require("../../../model/json/photo.resources.json"),
-                message: "",
-                category: "",
-                length: Number.parseInt(0),
-                contentType: "Application/json",
-                root_link: "/resources/photos"
-            })
-            : (async function () {
-                return
-            }());
+      request
+        ? response.jsonp({
+            data: require("../../../model/json/photo.resources.json"),
+            error: undefined,
+            status: Number.parseInt(200),
+            category: "photos",
+            length: Number.parseInt(
+              require("../../../model/json/photo.resources.json").length
+            ),
+            contentType: "Application/json",
+            root_link: "/resources/photos",
+            message: "Ok",
+            now: format(new Date(), "dd/mm/yyyy\tHH:mm:ss"),
+          })
+        : (async function () {
+            return;
+          })();
     } catch (error) {
-        console.log(error.message);
-        response.status(500)
-            .jsonp({
-                message: error.message
-            });
+      console.log(error.message);
+      response.status(500).jsonp({
+        message: "Internal server error",
+        error: error.message,
+        status: Number.parseInt(500),
+      });
     }
-}).post(require("../modules/post.photos.resources"));
+  })
+  .post(require("../modules/post.photos.resources"));
 
 // ****** //
-router.route("/photos/:id").get((request, response) => {
-    require("../modules/get.resource.controller")(request, response, "../../../model/json/photo.resources.json")
-}).patch((request, response) => {
+router
+  .route("/photos/:id")
+  .get((request, response) => {
+    require("../modules/get.resource.controller")(
+      request,
+      response,
+      "../../../model/json/photo.resources.json"
+    );
+  })
+  .patch((request, response) => {
     response.contentType = "Application/json";
     response.statusCode = 200;
 
-    const FoundResource = require("../../../model/json/photo.resources.json").find((resource) => {
+    const FoundResource =
+      require("../../../model/json/photo.resources.json").find((resource) => {
         return resource.id === request.params.id;
-    });
+      });
 
     try {
-        const { image_url } = request.body;
+      const { image_url } = request.body;
 
-        if (!image_url) {
-            response.status(400)
-                .jsonp({
-                    message: "All fields are required!"
-                });
-            return;
-        } else if (!FoundResource) {
-            response.status(404)
-                .jsonp({
-                    message: "No such resource with id was found!"
-                });
-        } else {
-            response.status(201)
-                .jsonp({
-                    data: `Resource with id ${FoundResource.id} has been updated!`,
-                    date: format(new Date(), "dd/MM/yyyy\tHH:mm:ss")
-                });
-            return;
-        }
+      if (!image_url) {
+        response.status(400).jsonp({
+          message: "All fields are required!",
+          error: "Bad request",
+        status: Number.parseInt(400),
+        contentType: "Application/json",
+        message: "Bad request",
+        });
+        return;
+      } else if (!FoundResource) {
+        response.status(404).jsonp({
+          message: "No such resource with id was found!",
+          error: "Not Found!",
+        status: Number.parseInt(404),
+        contentType: "Application/json",
+        message: "Not Found!",
+        });
+      } else {
+        response.status(201).jsonp({
+          data: `Resource with id ${FoundResource.id} has been updated!`,
+          error: undefined,
+          status: Number.parseInt(200),
+          contentType: "Application/json",
+          message: "Created",
+          now: format(new Date(), "dd/mm/yyyy\tHH:mm:ss"),
+        });
+        return;
+      }
     } catch (error) {
-        console.log(error.message);
-        response.status(500)
-            .jsonp({
-                message: error.message
-            });
+      console.log(error.message);
+      response.status(500).jsonp({
+        message: error.message,
+      });
     }
-}).delete((request, response) => {
-    require("../modules/delete.resource.controller")(request, response, "../../../model/json/photo.resources.json")
-}).patch((request, response) => {
+  })
+  .delete((request, response) => {
+    require("../modules/delete.resource.controller")(
+      request,
+      response,
+      "../../../model/json/photo.resources.json"
+    );
+  })
+  .patch((request, response) => {
     response.contentType = "Application/json";
     response.statusCode = 200;
 
-    const FoundResource = require("../../../model/json/photo.resources.json").find((resource) => {
+    const FoundResource =
+      require("../../../model/json/photo.resources.json").find((resource) => {
         return resource.id === request.params.id;
-    });
+      });
 
     try {
-        const { image_url } = request.body;
+      const { image_url } = request.body;
 
-        if (!image_url) {
-            response.status(400)
-                .jsonp({
-                    message: "All fields are required!"
-                });
-            return;
-        } else if (!FoundResource) {
-            response.status(404)
-                .jsonp({
-                    message: "No such resource with id was found!"
-                });
-        } else {
-            response.status(201)
-                .jsonp({
-                    data: `Resource with id ${FoundResource.id} has been updated!`,
-                    date: format(new Date(), "dd/MM/yyyy\tHH:mm:ss")
-                });
-            return;
-        }
+      if (!image_url) {
+        response.status(400).jsonp({
+          message: "All fields are required!",
+          error: "Bad request",
+        status: Number.parseInt(400),
+        contentType: "Application/json",
+        message: "Bad request",
+        });
+        return;
+      } else if (!FoundResource) {
+        response.status(404).jsonp({
+          message: "No such resource with id was found!",
+          error: "Not Found!",
+        status: Number.parseInt(404),
+        contentType: "Application/json",
+        message: "Not Found!",
+        });
+      } else {
+        response.status(201).jsonp({
+          data: `Resource with id ${FoundResource.id} has been updated!`,
+          error: undefined,
+          status: Number.parseInt(200),
+          contentType: "Application/json",
+          message: "Created",
+          now: format(new Date(), "dd/mm/yyyy\tHH:mm:ss"),
+        });
+        return;
+      }
     } catch (error) {
-        console.log(error.message);
-        response.status(500)
-            .jsonp({
-                message: error.message
-            });
+      console.log(error.message);
+      response.status(500).jsonp({
+        message: error.message,
+        error: "Internal server error",
+        status: Number.parseInt(500),
+        contentType: "Application/json",
+        message: "Internal server error",
+      });
     }
-});
+  });
 
 module.exports = router;

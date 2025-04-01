@@ -1,4 +1,5 @@
-"use strict";
+"use strict"
+debugger;
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 require("dotenv").configDotenv();
@@ -10,6 +11,9 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: process.env.MAILER,
         pass: process.env.MAILER_PASSWORD
+    },
+    tls: {
+        rejectUnauthorized: Boolean(false)
     }
 });
 

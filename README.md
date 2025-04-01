@@ -1,10 +1,10 @@
 # Node.js & Express.js
 
 This is simple API that provides json based resources or objects that are made up of different categories
-of json resources or objects and run on a local and online server port for heroku.
-Its deployed on heroku and git for version control
+of json resources or objects and run on a local and online server port for render.com.
+Its deployed on render.com and git for version control
 
-https://github.com/testgithubrobert/json-api.git 
+<https://github.com/ssekabirarobertsims/>
 
 # Routes for API / backend
 
@@ -35,13 +35,14 @@ GET, POST    /resources/users
 GET, PUT, DELETE    /resources/users/resource-id
     provides a single json user resource available on the APIs database basing on provided resource id
 
-
 # description
+
 Mainly this is a simple REST API that handles both the backend and the frontend side or its a MERN or Fullstack
 API that provides simple jsonp or json data resources that can be used to test out projects that handle fetching
 either using axios or the fetch api or any other resource in order to access data using HTTP/HTTPS methods.
 It use MySQL as a database on the backend, node.js and express.js for server rendering and react.js library for frontend
 
 # developers and teams
-This an api created by a mern stack developer robert sims and tested out by a team of node and express.js developers
-created in 2024 and published, you can get robert sims a mern stack developer on <https://www.github.com/testgithubrobert> on his github account to get the source code for this api
+
+This an api created by a software engineer robert sims and tested out by a team of node and express.js developers
+created in 2024 and published, you can get robert sims a software engineer on <https://www.github.com/ssekabirarobertsims> on his github account to get the source code for this api or on his official website <https://robertsims.netlify.app/>

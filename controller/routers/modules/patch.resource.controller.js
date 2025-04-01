@@ -1,3 +1,5 @@
+"use strict"
+debugger;
 const { format } = require("date-fns");
 
 module.exports = async function (request, response, path) {
@@ -12,13 +14,21 @@ module.exports = async function (request, response, path) {
         if (!FoundResource) {
             response.status(404)
                 .jsonp({
-                    message: "No such resource with id was found!"
+                    message: "No such resource with id was found!",
+                    error: "Not Found!",
+                    status: Number.parseInt(404),
+                    contentType: "Application/json",
+                    message: "Not Found!",
                 });
         } else {
             response.status(200)
                 .jsonp({
                     data: `Resource with id ${FoundResource.id} has been updated!`,
-                    date: format(new Date(), "dd/MM/yyyy\tHH:mm:ss")
+                    date: format(new Date(), "dd/MM/yyyy\tHH:mm:ss"),
+                    error: undefined,
+                    status: Number.parseInt(200),
+                    contentType: "Application/json",
+                    message: "Ok",
                 });
         }
     } catch (error) {

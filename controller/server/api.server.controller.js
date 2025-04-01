@@ -1,4 +1,5 @@
 "use strict";
+debugger;
 const express = require("express");
 const application = express();
 const http = require("node:http");
@@ -11,21 +12,25 @@ const apicache = require("apicache");
 const cache = apicache.middleware;
 
 const cors = require("cors");
-const allowedOrigins = ["*"];
-application.use(cors({
+
+application.use(
+  cors({
     origin: "*",
-    credentials: true
-}));
+    credentials: true,
+  })
+);
 
 application.use(function (request, response, next) {
-    response.statusCode = Number(parseInt(200));
-    response.contentType = "Application/json";
+  response.contentType = "Application/json";
 
-    response.setHeader("Access-Control-Allow-Credentials", Boolean(true))
-    response.setHeader("Access-Control-Allow-Origin", "*");
-    response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PATCH, UPDATE");
+  response.setHeader("Access-Control-Allow-Credentials", Boolean(true));
+  response.setHeader("Access-Control-Allow-Origin", "*");
+  response.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, DELETE, PATCH, UPDATE"
+  );
 
-    next();
+  next();
 });
 
 application.use(bodyParser.urlencoded({ extended: Boolean(false) }));
@@ -33,11 +38,76 @@ application.use(express.urlencoded({ extended: Boolean(false) }));
 application.use(cookieParser());
 application.use(bodyParser.json());
 application.use(express.json());
-application.use(express.static(require("node:path").join(__dirname, "../../view")));
-application.use(express.static(require("node:path").join(__dirname, "../../view/public")));
+application.use(
+  express.static(require("node:path").join(__dirname, "../../view"))
+);
+application.use(
+  express.static(require("node:path").join(__dirname, "../../public"))
+);
+application.use(
+  express.static(require("node:path").join(__dirname, "../../public/photos"))
+);
+application.use(
+  express.static(
+    require("node:path").join(__dirname, "../../public/stylesheets")
+  )
+);
+
+const fsp = require("node:fs/promises");
+const fs = require("node:fs");
+
+fs.readdir(
+  require("node:path").join(__dirname, "../../view/"),
+  { encoding: "utf8" },
+  (error, data) => {
+    error
+      ? console.log("error while reading dir ../../view/", error.message)
+      : console.log("read dir ../../view/");
+  }
+);
+
+fs.readdir(
+  require("node:path").join(__dirname, "../../public/"),
+  { encoding: "utf8" },
+  (error, data) => {
+    error
+      ? console.log("error while reading dir ../../public/", error.message)
+      : console.log("read dir ../../public/");
+  }
+);
+
+fs.readdir(
+  require("node:path").join(__dirname, "../../public/photos/"),
+  { encoding: "utf8" },
+  (error, data) => {
+    error
+      ? console.log(
+          "error while reading dir ../../public/photos/",
+          error.message
+        )
+      : console.log("read dir ../../public/photos/");
+  }
+);
+
+fs.readdir(
+  require("node:path").join(__dirname, "../../public/stylesheets/"),
+  { encoding: "utf8" },
+  (error, data) => {
+    error
+      ? console.log(
+          "error while reading dir ../../public/stylesheets/",
+          error.message
+        )
+      : console.log("read dir ../../public/stylesheets/");
+  }
+);
 
 application.use("/", require("../routers/root.router.controller"));
-application.use("/resources", cache("5 minutes"), require("../routers/resources.controller"));
+application.use(
+  "/resources",
+  cache("5 minutes"),
+  require("../routers/resources.controller")
+);
 
 application.use(require("../middleware/error/404.middleware.controller"));
 
@@ -47,7 +117,7 @@ const emitter = new events();
 emitter.on("start", () => console.log("server running!"));
 
 server.listen(application.get("port") || process.env.PORT, () => {
-    server.listening ? emitter.emit("start") : console.log("server not running!");
+  server.listening ? emitter.emit("start") : console.log("server not running!");
 });
 
 module.exports = application;
