@@ -7,7 +7,8 @@
 
 :root {
     --primary-color: #0066ff;
-    --primary-font-family: "Liter", serif, sans-serif;
+    --primary-font-family: "Lilita One", sans-serif;
+    --primary-font-family-two: "Winky Sans", sans-serif;
 }
 
 body {
@@ -17,7 +18,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: var(--primary-font-family)
+    font-family: var(--primary-font-family-two);
 }
 
 ::-webkit-scrollbar {
@@ -28,6 +29,10 @@ body {
     width: .5em;
     background-color: hsl(0, 0%, 10%);
     border-radius: 10em;
+}
+
+h1, h2, h3 {
+    font-family: var(--primary-font-family)
 }
 
 main {
