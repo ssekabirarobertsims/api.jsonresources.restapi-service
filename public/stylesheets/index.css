@@ -7,7 +7,8 @@
 
 :root {
     --primary-color: #0066ff;
-    --primary-font-family: "Liter", serif, sans-serif;
+    --primary-font-family: "Lilita One", sans-serif;
+    --primary-font-family-two: "Winky Sans", sans-serif;
 }
 
 body {
@@ -17,16 +18,21 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: var(--primary-font-family)
+    font-family: var(--primary-font-family-two);
 }
 
 ::-webkit-scrollbar {
     width: .5em;
 }
+
 ::-webkit-scrollbar-thumb {
     width: .5em;
     background-color: hsl(0, 0%, 10%);
     border-radius: 10em;
+}
+
+h1, h2, h3 {
+    font-family: var(--primary-font-family)
 }
 
 main {
@@ -47,7 +53,8 @@ nav {
     flex-flow: row wrap;
     /* border: 1px solid red; */
 }
-nav > div[class="wrapper"] {
+
+nav>div[class="wrapper"] {
     min-height: 10vh;
     width: min(90%, 90%);
     display: flex;
@@ -67,6 +74,7 @@ header {
     flex-flow: row wrap;
     border-bottom: 1px solid hsl(0, 0, 50%);
 }
+
 header div[class="wrapper"] {
     min-height: 90vh;
     width: min(90%, 90%);
@@ -77,16 +85,19 @@ header div[class="wrapper"] {
     text-align: center;
     gap: 1em;
 }
+
 header div[class="wrapper"] :is(h1) {
     font-size: 3em;
     font-weight: bold;
 }
+
 header div[class="wrapper"] :is(p) {
     font-size: 1em;
     font-weight: normal;
     color: hsl(0, 0, 10%);
     max-width: 60em;
 }
+
 header div[class="wrapper"] :is(a) {
     font-size: .9em;
     font-weight: normal;
@@ -142,9 +153,10 @@ footer {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    border-top: 1px solid hsl(0, 0%, 90%); 
+    border-top: 1px solid hsl(0, 0%, 90%);
     gap: 0em;
 }
+
 footer div {
     min-height: 10vh;
     width: min(90%, 90%);
@@ -155,10 +167,12 @@ footer div {
     text-align: center;
     gap: .4em;
 }
+
 footer div p :where(a) {
     text-decoration-color: none;
     color: var(--primary-color);
 }
+
 footer div :is(p) {
     font-size: .9em;
     color: hsl(0, 0%, 10%);

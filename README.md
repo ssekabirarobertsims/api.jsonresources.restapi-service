@@ -45,4 +45,4 @@ It use MySQL as a database on the backend, node.js and express.js for server ren
 # developers and teams
 
 This an api created by a software engineer robert sims and tested out by a team of node and express.js developers
-created in 2024 and published, you can get robert sims a software engineer on <https://www.github.com/ssekabirarobertsims> on his github account to get the source code for this api or on his official website <https://robertsims.netlify.app/>
+created in 2024 and published, you can get robert sims a software engineer on <https://www.github.com/ssekabirarobertsims> on his github account to get the source code for this api or on his official website <https://ssekabirarobertsims.netlify.app/>
