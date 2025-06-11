@@ -12,8 +12,8 @@
     "information": "To use this api you must allow it to access your browsers session and cookie storage for easy remembering you when using the api. This api will also have access to your cookies storage and will handle some crucial operations using cookies from its server."
   },
   "publish-date": "09/03/2024",
-  "backend developer": "robertsims.netlify.app",
-  "frontend developer": "robertsims.netlify.app",
+  "backend developer": "https://ssekabirarobertsims.netlify.app",
+  "frontend developer": "https://ssekabirarobertsims.netlify.app",
   "author": "robert sims",
   "technologies": [
     "node.js",

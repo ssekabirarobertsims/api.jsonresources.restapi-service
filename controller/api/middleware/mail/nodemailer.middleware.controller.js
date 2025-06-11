@@ -1,5 +1,5 @@
 "use strict";
-debugger;
+
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 require("dotenv").configDotenv();
@@ -17,24 +17,19 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// ********* //
-function SendLoginMail(subject, to) {
-  transporter.sendMail({
-    to: to,
-    subject: subject,
-    html: ``,
-    text: "",
-  });
-}
+module.exports = async (receiver, username) => {
+  try {
+    mailerTransporter.sendMail({
+      to: receiver,
+      sender: process.env.MAILER,
+      html: ``,
+      subject: ``,
+    });
 
-// ************* //
-function SendSignupMail(subject, to) {
-  transporter.sendMail({
-    to: to,
-    subject: subject,
-    html: ``,
-    text: "",
-  });
-}
-
-module.exports = { SendLoginMail, SendSignupMail };
+    console.log(`sent email to ${receiver}`);
+  } catch (error) {
+    console.log(error?.message);
+  } finally {
+    console.log("email was sent to:", receiver);
+  }
+};

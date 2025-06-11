@@ -9,6 +9,7 @@
     --primary-color: #0066ff;
     --primary-font-family: "Lilita One", sans-serif;
     --primary-font-family-two: "Winky Sans", sans-serif;
+    --primary-font-family-three: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
@@ -18,7 +19,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: var(--primary-font-family-two);
+    font-family: var(--primary-font-family-three)
 }
 
 ::-webkit-scrollbar {
@@ -99,10 +100,23 @@ header div[class="wrapper"] :is(p) {
 }
 
 header div[class="wrapper"] :is(a) {
-    font-size: .9em;
+    min-height: 1em;
+    width: min(100%, 15em);
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+header div[class="wrapper"] :is(a) > button {
+    height: 3em;
+    width: min(100%, 15em);
+    background-color: #000;
     font-weight: normal;
-    color: var(--primary-color);
-    text-decoration-color: none;
+    color: #fff;
+    border-radius: .3em;
+    border: none;
+    cursor: pointer;
 }
 
 /*  */
@@ -143,6 +157,58 @@ section[class="four-o-four"] {
     gap: 1em;
 }
 
+/*  */
+.not-found-page-container {
+  min-height: 100vh;
+  width: min(100%, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  /* border: 1px solid red; */
+}
+
+.not-found-page-content {
+  min-height: 80vh;
+  width: min(90%, 90%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1em;
+}
+
+.not-found-page-title {
+  font-size: 6rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.not-found-page-prime-message {
+  color: #4b5563;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+.not-found-page-message {
+  color: #4b5563;
+  font-size: .9em;
+  max-width: 50em;
+}
+
+.not-found-page-link {
+  color: var(--primary-theme-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: text-decoration 0.2s;
+}
+
+.not-found-page-link:hover,
+.not-found-page-link:focus {
+  text-decoration: underline;
+}
 
 /*  */
 footer {
@@ -153,8 +219,8 @@ footer {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    border-top: 1px solid hsl(0, 0%, 90%);
     gap: 0em;
+    background-color: #000;
 }
 
 footer div {
@@ -175,6 +241,6 @@ footer div p :where(a) {
 
 footer div :is(p) {
     font-size: .9em;
-    color: hsl(0, 0%, 10%);
+    color: hsl(0, 0%, 90%);
     font-weight: normal;
 }

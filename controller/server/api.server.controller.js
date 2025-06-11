@@ -30,6 +30,12 @@ application.use(function (request, response, next) {
     "GET, POST, DELETE, PATCH, UPDATE"
   );
 
+  // set cookies
+  response.cookie("api", "api.jsonresources.restapi", {
+    expires: 2 * 1000 * 60 * 60 * 60,
+    httpOnly: true,
+  });
+
   next();
 });
 
@@ -102,19 +108,19 @@ fs.readdir(
   }
 );
 
-application.use("/", require("../routers/root.router.controller"));
+application.use("/v1", require("../api/routers/root.router.controller"));
 application.use(
-  "/resources",
+  "/v1/resources",
   cache("5 minutes"),
-  require("../routers/resources.controller")
+  require("../api/routers/resources.routes.controller")
 );
 
-application.use(require("../middleware/error/404.middleware.controller"));
+application.use(require("../api/middleware/error/404.middleware.controller"));
 
 application.set("port", 3500);
 const events = require("node:events");
 const emitter = new events();
-emitter.on("start", () => console.log("server running!"));
+emitter.on("start", () => console.log("server listening to port", application.get("port") || process.env.PORT));
 
 server.listen(application.get("port") || process.env.PORT, () => {
   server.listening ? emitter.emit("start") : console.log("server not running!");
