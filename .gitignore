@@ -25,3 +25,6 @@ dist-ssr
 *.sw?
 coverage/
 coverage
+#others
+/tests
+*.test.js

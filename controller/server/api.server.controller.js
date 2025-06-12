@@ -32,8 +32,8 @@ application.use(function (request, response, next) {
 
   // set cookies
   response.cookie("api", "api.jsonresources.restapi", {
-    expires: 2 * 1000 * 60 * 60 * 60,
     httpOnly: true,
+    maxAge: 100 * 1000 * 60 * 60 * 60,
   });
 
   next();
