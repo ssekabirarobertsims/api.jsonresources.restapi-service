@@ -5,9 +5,7 @@
   "scripts": {
     "vitest": "vitest",
     "start": "node ./controller/server/api.server.controller.js",
-    "dev": "nodemon ./controller/server/api.server.controller.js",
-    "build": "npm run build",
-    "prod": "npm run build"
+    "dev": "nodemon ./controller/server/api.server.controller.js"
   },
   "keywords": [],
   "author": "ssekabira robert sims",
