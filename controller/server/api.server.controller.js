@@ -83,6 +83,7 @@ fs.readdir(
 );
 
 fs.readdir(
+  // Read the contents of the photos directory to verify access and log status
   require("node:path").join(__dirname, "../../public/photos/"),
   { encoding: "utf8" },
   (error, data) => {
@@ -96,6 +97,7 @@ fs.readdir(
 );
 
 fs.readdir(
+  // Read the contents of the stylesheets directory to verify access and log status
   require("node:path").join(__dirname, "../../public/stylesheets/"),
   { encoding: "utf8" },
   (error, data) => {
@@ -108,6 +110,7 @@ fs.readdir(
   }
 );
 
+// Mount the main API router for version 1 endpoints
 application.use("/v1", require("../api/routers/root.router.controller"));
 application.use(
   "/v1/resources",
