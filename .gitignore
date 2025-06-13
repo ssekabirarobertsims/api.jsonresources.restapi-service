@@ -23,5 +23,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-coverage/
-coverage
+coverage/*
+/tests
+tests/*
+tests/
+/tests/api.test.js
+*.test.js
