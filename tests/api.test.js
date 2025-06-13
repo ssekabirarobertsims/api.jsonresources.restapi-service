@@ -1,6 +1,6 @@
 const request = require("supertest");
 const application = require("../controller/server/api.server.controller");
-const resourcesRouters = require("../controller/routers/resources.controller");
+const resourcesRouters = require("../controller/api/routers/resources.routes.controller");
 import { describe, test, expect, it } from "vitest";
 
 // test root routes for api
